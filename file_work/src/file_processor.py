@@ -5,15 +5,7 @@ from ..utils.utilities import Messages, Check
 class FileProcessor:
     @staticmethod
     def read_file(path_params):
-        specified_keys = ["folder_path", "file_name", "extension"]
-
-        if not Check.dictionary_specified(path_params, specified_keys):
-            Messages.Error.specified_dictionary(specified_keys)
-            return None
-
-        folder_path = path_params.get('folder_path', '')
-        file_name = path_params.get('file_name', '')
-        extension = path_params.get('extension', '')
+        folder_path, file_name, extension = PathValidator.extract_path(path_params)
 
         data = None
         path = PathValidator.get_full_path(folder_path, file_name, extension)
@@ -30,15 +22,7 @@ class FileProcessor:
 
     @staticmethod
     def write_file(path_params, data, overwrite=False):
-        specified_keys = ["folder_path", "file_name", "extension"]
-
-        if not Check.dictionary_specified(path_params, specified_keys):
-            Messages.Error.specified_dictionary(specified_keys)
-            return False
-
-        folder_path = path_params.get('folder_path', '')
-        file_name = path_params.get('file_name', '')
-        extension = path_params.get('extension', '')
+        folder_path, file_name, extension = PathValidator.extract_path(path_params)
 
         is_success = False
         path = PathValidator.get_full_path(folder_path, file_name, extension)

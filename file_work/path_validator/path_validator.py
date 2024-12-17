@@ -2,7 +2,6 @@ import os
 
 from ..utils.utilities import Messages, Check
 
-
 class PathValidator:
     @staticmethod
     def for_read(folder_path, file_name, extension, valid_extensions):
@@ -41,6 +40,19 @@ class PathValidator:
         return True
 
     @staticmethod
+    def extract_path(path_params):
+        specified_keys = ["folder_path", "file_name", "extension"]
+
+        if not Check.dictionary_specified(path_params, specified_keys):
+            Messages.Error.specified_dictionary(specified_keys)
+            return None
+
+        folder_path = path_params.get("folder_path", "")
+        file_name = path_params.get("file_name", "")
+        extension = path_params.get("extension", "")
+        return folder_path, file_name, extension
+
+    @staticmethod
     def validate_path(file_path, check_type=None, valid_extensions=None, extension=None):
         if check_type == 'file' and not Check.file_file(file_path):
             return False
@@ -64,5 +76,3 @@ class PathValidator:
 
         relative_path = os.path.relpath(current_dir, start=project_dir)
         return relative_path
-
-        #return os.path.relpath(os.getcwd(), start=os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
