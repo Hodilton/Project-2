@@ -1,0 +1,8 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS books (Id INTEGER PRIMARY KEY, Title TEXT (50) NOT NULL, Author TEXT (30) NOT NULL, Genre TEXT (30) NOT NULL, Year (30) INTEGER, ISBN TEXT UNIQUE);",
+    "drop":   "DROP TABLE IF EXISTS books;",
+    "insert": "INSERT INTO books (Title, Author, Genre, Year, ISBN) VALUES (?, ?, ?, ?, ?);",
+    "update": "UPDATE books SET Title = ?, Author = ?, Genre = ?, Year = ?, ISBN = ? WHERE Id = ?;",
+    "delete": "DELETE FROM books WHERE Id = ?;",
+    "select_all": "SELECT * FROM books;"
+}

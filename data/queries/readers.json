@@ -1,0 +1,8 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS readers (Id INTEGER PRIMARY KEY, LastName TEXT (30) NOT NULL, FirstName TEXT (30) NOT NULL, MiddleName TEXT (30) NOT NULL, Email TEXT (30) UNIQUE, Phone TEXT (15), RegistrationDate TEXT (10) NOT NULL);",
+    "drop": "DROP TABLE IF EXISTS readers;",
+    "insert": "INSERT INTO readers (LastName, FirstName, MiddleName, Email, Phone, RegistrationDate) VALUES (?, ?, ?, ?, ?, ?);",
+    "update": "UPDATE readers SET LastName = ?, FirstName - ?, MiddleName - ?, Email = ?, Phone = ?, RegistrationDate = ? WHERE Id = ?;",
+    "delete": "DELETE FROM readers WHERE Id = ?;",
+    "select_all": "SELECT * FROM readers;"
+}
