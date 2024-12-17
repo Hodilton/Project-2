@@ -8,6 +8,34 @@ class Messages:
         def close_connection(db_path):
             print(f"The connection to Database {db_path} was successful close.")
 
+        @staticmethod
+        def create_db(db_path):
+            print(f"The Database {db_path} has been created.")
+
+        @staticmethod
+        def delete_db(db_path):
+            print(f"The Database {db_path} has been deleted.")
+
+        @staticmethod
+        def table_load_config():
+            print(f"The Tables Config was uploaded.")
+
+        @staticmethod
+        def table_load_queries(table_name):
+            print(f"Queries for table {table_name} was uploaded.")
+
+        @staticmethod
+        def table_initialized(table_name):
+            print(f"Initialized table '{table_name}' with queries.")
+
+        @staticmethod
+        def table_creating(table_name):
+            print(f"Table '{table_name}' created successfully.")
+
+        @staticmethod
+        def table_droping(table_name):
+            print(f"Table '{table_name}' dropped successfully.")
+
     class Error:
         @staticmethod
         def try_action(exception):
@@ -22,10 +50,65 @@ class Messages:
             print(f"There is no connection to the Database {db_path}.")
 
         @staticmethod
-        def specified_dictionary(specified_keys):
-            print(f"Required keys are not specified: {', '.join(specified_keys)}.")
+        def db_path():
+            print("Invalid database path configuration.")
 
         @staticmethod
-        def file_extension(file_path, valid_extensions):
-            print(f"File '{file_path}' has an invalid extension."
-                  f"Valid extension: {', '.join(valid_extensions)}.")
+        def create_db(db_path):
+            print(f"The Database {db_path} was not created.")
+
+        @staticmethod
+        def delete_db(db_path):
+            print(f"The Database {db_path} was not deleted.")
+
+        @staticmethod
+        def db_already_exist(db_path):
+            print(f"The Database {db_path} already exists.")
+
+        @staticmethod
+        def db_file_found(db_path):
+            print(f"The Database {db_path} file was not found.")
+
+        @staticmethod
+        def table_load_config():
+            raise Exception(f"The Tables Config was not uploaded.")
+
+        @staticmethod
+        def table_load_queries(table_name):
+            raise Exception(f"Queries for table '{table_name}' was not uploaded.")
+
+        @staticmethod
+        def table_found(table_name):
+            print(f"Table '{table_name}' not found in configuration.")
+
+        @staticmethod
+        def connection_already_established(db_path):
+            print(f"The connection to the Database {db_path} has already been established.")
+
+        @staticmethod
+        def table_initialized(table_name):
+            print(f"Failed to initialize tables: '{table_name}'.")
+
+        @staticmethod
+        def table_creating(table_name):
+            print(f"Error creating table '{table_name}.")
+
+        @staticmethod
+        def table_droping(table_name):
+            print(f"Error dropping table '{table_name}'.")
+
+        @staticmethod
+        def data_inserting(table_name):
+            print(f"Error inserting data into table '{table_name}'.")
+
+        @staticmethod
+        def data_updating(table_name):
+            print(f"Error updating data in table '{table_name}'.")
+
+        @staticmethod
+        def data_deleting(table_name):
+            print(f"Error deleting data from table '{table_name}'.")
+
+        @staticmethod
+        def data_fetching(table_name):
+            print(f"Error fetching data from table '{table_name}'.")
