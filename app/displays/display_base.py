@@ -52,7 +52,7 @@ class DisplayBase:
     def open_form_window(self, mode):
         self.form_window = Toplevel(self.parent)
         self.form_window.title("Добавление" if mode == "add" else "Обновление")
-        self.form_window.geometry("400x200")
+        self.form_window.geometry(self.form_window_geometry)
         self.form_window.grab_set()
 
         self.create_form()
