@@ -3,6 +3,8 @@ from app.displays.display_genres import DisplayGenres
 from app.displays.book_statuses import DisplayBookStatuses
 from app.displays.display_books import DisplayBooks
 from app.displays.display_authors import DisplayAuthors
+from app.displays.display_departments import DisplayDepartments
+from app.displays.display_librarians import DisplayLibrarians
 
 
 frames_config = {
@@ -28,5 +30,19 @@ frames_config = {
             "class": DisplayAuthors,
             "name": "Авторы",
         },
+    },
+
+    "Сотрудники": {
+
+        "librarians": {
+            "class": DisplayLibrarians,
+            "name": "Сотрудники",
+        },
+
+        "departments": {
+            "class": DisplayDepartments,
+            "name": "Должности",
+        },
+
     },
 }
