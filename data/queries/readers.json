@@ -1,8 +1,13 @@
 {
-    "create": "CREATE TABLE IF NOT EXISTS readers (Id INTEGER PRIMARY KEY, LastName TEXT (30) NOT NULL, FirstName TEXT (30) NOT NULL, MiddleName TEXT (30) NOT NULL, Email TEXT (30) UNIQUE, Phone TEXT (15), RegistrationDate TEXT (10) NOT NULL);",
+    "create": "CREATE TABLE IF NOT EXISTS readers (id INT AUTO_INCREMENT PRIMARY KEY, LastName VARCHAR(255) NOT NULL, MiddleName VARCHAR(255), SecondName VARCHAR(255));",
     "drop": "DROP TABLE IF EXISTS readers;",
-    "insert": "INSERT INTO readers (LastName, FirstName, MiddleName, Email, Phone, RegistrationDate) VALUES (?, ?, ?, ?, ?, ?);",
-    "update": "UPDATE readers SET LastName = ?, FirstName - ?, MiddleName - ?, Email = ?, Phone = ?, RegistrationDate = ? WHERE Id = ?;",
-    "delete": "DELETE FROM readers WHERE Id = ?;",
-    "select_all": "SELECT * FROM readers;"
+
+    "insert": "INSERT INTO readers (LastName, MiddleName, SecondName) VALUES (%s, %s, %s);",
+    "delete": "DELETE FROM readers WHERE id = %s;",
+    "update": "UPDATE readers SET LastName = %s, MiddleName = %s, SecondName = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM readers WHERE LastName = %s AND MiddleName = %s AND SecondName = %s;",
+
+    "fetch_one": "SELECT * FROM readers WHERE id = %s;",
+    "fetch_all": "SELECT * FROM readers;"
 }

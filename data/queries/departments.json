@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS departments (id INT AUTO_INCREMENT PRIMARY KEY, department_name VARCHAR(255) NOT NULL);",
+    "drop": "DROP TABLE IF EXISTS departments;",
+
+    "insert": "INSERT INTO departments (department_name) VALUES (%s);",
+    "delete": "DELETE FROM departments WHERE id = %s;",
+    "update": "UPDATE departments SET department_name = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM departments WHERE department_name = %s;",
+
+    "fetch_one": "SELECT * FROM departments WHERE id = %s;",
+    "fetch_all": "SELECT * FROM departments;"
+}

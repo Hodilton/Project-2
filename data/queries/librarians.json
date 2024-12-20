@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS librarians (id INT AUTO_INCREMENT PRIMARY KEY, LastName VARCHAR(255) NOT NULL, MiddleName VARCHAR(255), SecondName VARCHAR(255), id_department INT NOT NULL, FOREIGN KEY (id_department) REFERENCES departments(id));",
+    "drop": "DROP TABLE IF EXISTS librarians;",
+
+    "insert": "INSERT INTO librarians (LastName, MiddleName, SecondName, id_department) VALUES (%s, %s, %s, %s);",
+    "delete": "DELETE FROM librarians WHERE id = %s;",
+    "update": "UPDATE librarians SET LastName = %s, MiddleName = %s, SecondName = %s, id_department = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM librarians WHERE LastName = %s AND MiddleName = %s AND SecondName = %s;",
+
+    "fetch_one": "SELECT l.id, l.LastName, l.MiddleName, l.SecondName, d.department_name FROM librarians l JOIN departments d ON l.id_department = d.id WHERE l.id = %s;",
+    "fetch_all": "SELECT l.id, l.LastName, l.MiddleName, l.SecondName, d.department_name FROM librarians l JOIN departments d ON l.id_department = d.id;"
+}

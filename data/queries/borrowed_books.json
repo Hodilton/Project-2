@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS borrowed_books (id INT AUTO_INCREMENT PRIMARY KEY, date_from DATE NOT NULL, date_to DATE, id_book_status INT NOT NULL, id_book INT NOT NULL, id_reader INT NOT NULL, id_librarian INT NOT NULL, FOREIGN KEY (id_book_status) REFERENCES book_statuses(id), FOREIGN KEY (id_book) REFERENCES books(id), FOREIGN KEY (id_reader) REFERENCES readers(id), FOREIGN KEY (id_librarian) REFERENCES librarians(id));",
+    "drop": "DROP TABLE IF EXISTS borrowed_books;",
+
+    "insert": "INSERT INTO borrowed_books (date_from, date_to, id_book_status, id_book, id_reader, id_librarian) VALUES (%s, %s, %s, %s, %s, %s);",
+    "delete": "DELETE FROM borrowed_books WHERE id = %s;",
+    "update": "UPDATE borrowed_books SET date_from = %s, date_to = %s, id_book_status = %s, id_book = %s, id_reader = %s, id_librarian = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM borrowed_books WHERE id_book = %s AND id_reader = %s AND id_librarian = %s AND date_from = %s;",
+
+    "fetch_one": "SELECT bb.id, bb.date_from, bb.date_to, bs.status_name, b.title, r.LastName AS reader_last, r.MiddleName AS reader_middle, r.SecondName AS reader_second, l.LastName AS librarian_last, l.MiddleName AS librarian_middle, l.SecondName AS librarian_second FROM borrowed_books bb JOIN books b ON bb.id_book = b.id JOIN readers r ON bb.id_reader = r.id JOIN librarians l ON bb.id_librarian = l.id JOIN book_statuses bs ON bb.id_book_status = bs.id WHERE bb.id = %s;",
+    "fetch_all": "SELECT bb.id, bb.date_from, bb.date_to, bs.status_name, b.title, r.LastName AS reader_last, r.MiddleName AS reader_middle, r.SecondName AS reader_second, l.LastName AS librarian_last, l.MiddleName AS librarian_middle, l.SecondName AS librarian_second FROM borrowed_books bb JOIN books b ON bb.id_book = b.id JOIN readers r ON bb.id_reader = r.id JOIN librarians l ON bb.id_librarian = l.id JOIN book_statuses bs ON bb.id_book_status = bs.id;"
+}

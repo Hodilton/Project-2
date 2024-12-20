@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS book_statuses (id INT AUTO_INCREMENT PRIMARY KEY, status_name VARCHAR(255) NOT NULL);",
+    "drop": "DROP TABLE IF EXISTS book_statuses;",
+
+    "insert": "INSERT INTO book_statuses (status_name) VALUES (%s);",
+    "delete": "DELETE FROM book_statuses WHERE id = %s;",
+    "update": "UPDATE book_statuses SET status_name = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM book_statuses WHERE status_name = %s;",
+
+    "fetch_one": "SELECT * FROM book_statuses WHERE id = %s;",
+    "fetch_all": "SELECT * FROM book_statuses;"
+}

@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS genres (id INT AUTO_INCREMENT PRIMARY KEY, genre_name VARCHAR(255) NOT NULL UNIQUE);",
+    "drop": "DROP TABLE IF EXISTS genres;",
+
+    "insert": "INSERT INTO genres (genre_name) VALUES (%s);",
+    "delete": "DELETE FROM genres WHERE id = %s;",
+    "update": "UPDATE genres SET genre_name = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM genres WHERE genre_name = %s;",
+
+    "fetch_one": "SELECT * FROM genres WHERE id = %s;",
+    "fetch_all": "SELECT * FROM genres;"
+}

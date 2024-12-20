@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS authors (id INT AUTO_INCREMENT PRIMARY KEY, LastName VARCHAR(255) NOT NULL, MiddleName VARCHAR(255), SecondName VARCHAR(255));",
+    "drop": "DROP TABLE IF EXISTS authors;",
+
+    "insert": "INSERT INTO authors (LastName, MiddleName, SecondName) VALUES (%s, %s, %s);",
+    "delete": "DELETE FROM authors WHERE id = %s;",
+    "update": "UPDATE authors SET LastName = %s, MiddleName = %s, SecondName = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM authors WHERE LastName = %s AND MiddleName = %s AND SecondName = %s;",
+
+    "fetch_one": "SELECT * FROM authors WHERE id = %s;",
+    "fetch_all": "SELECT * FROM authors;"
+}
