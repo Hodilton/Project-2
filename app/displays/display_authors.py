@@ -5,7 +5,7 @@ from .display_base import DisplayBase
 
 class DisplayAuthors(DisplayBase):
     def __init__(self, parent, db_manager):
-        self.db_table = db_manager.tables['authors']
+        self.table_authors = db_manager.tables['authors']
         self.inputs = {}
 
         super().__init__(parent, db_manager)
@@ -43,25 +43,17 @@ class DisplayAuthors(DisplayBase):
             self.inputs['a_second_name'].delete(0, tk.END)
             self.inputs['a_second_name'].insert(0, a_second_name.strip())
 
-    def add_item(self):
+    def add_or_update_item(self, mode):
         a_last_name = self.inputs['a_last_name'].get().strip()
         a_middle_name = self.inputs['a_middle_name'].get().strip()
         a_second_name = self.inputs['a_second_name'].get().strip()
 
         if a_last_name and a_middle_name and a_second_name:
-            self.db_table.insert_data((a_last_name, a_middle_name, a_second_name))
-            self.update_listbox()
-            self.form_window.destroy()
-        else:
-            messagebox.showerror("Ошибка", "Введите корректные данные")
+            if mode is "add":
+                self.table_authors.insert_data((a_last_name, a_middle_name, a_second_name))
+            elif mode is "update":
+                self.table_authors.update_data((a_last_name, a_middle_name, a_second_name), (self.id_to_update,))
 
-    def update_item(self):
-        a_last_name = self.inputs['a_last_name'].get().strip()
-        a_middle_name = self.inputs['a_middle_name'].get().strip()
-        a_second_name = self.inputs['a_second_name'].get().strip()
-
-        if a_last_name and a_middle_name and a_second_name:
-            self.db_table.update_data((a_last_name, a_middle_name, a_second_name), (self.id_to_update,))
             self.update_listbox()
             self.form_window.destroy()
         else:
@@ -70,15 +62,10 @@ class DisplayAuthors(DisplayBase):
     def delete_item(self):
         super().delete_item()
 
-        self.db_table.delete_data((self.id_to_delete,))
+        self.table_authors.delete_data((self.id_to_delete,))
         self.update_listbox()
 
     def update_listbox(self):
+        self.listbox.delete(0, tk.END)
+        self.data = self.table_authors.fetch_all()
         super().update_listbox()
-
-        data = self.db_table.fetch_all()
-
-        if data:
-            for row in data:
-                display_string = f"{row[0]}: {row[1]} - {row[2]} - {row[3]}"
-                self.listbox.insert(tk.END, display_string)

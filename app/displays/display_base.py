@@ -87,12 +87,14 @@ class DisplayBase:
         else:
             messagebox.showerror("Ошибка", "Выберите элемент для обновления")
 
+    def add_or_update_item(self, mode):
+        pass
 
     def add_item(self):
-        pass
+        self.add_or_update_item("add")
 
     def update_item(self):
-        pass
+        self.add_or_update_item("update")
 
     def delete_item(self):
         selected_index = self.listbox.curselection()
@@ -108,4 +110,7 @@ class DisplayBase:
         self.update_listbox()
 
     def update_listbox(self):
-        self.listbox.delete(0, tk.END)
+        if self.data:
+            for row in self.data:
+                display_string = f"{row[0]}: " + " - ".join(map(str, row[1:]))
+                self.listbox.insert(tk.END, display_string)

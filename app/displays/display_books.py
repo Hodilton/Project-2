@@ -60,33 +60,10 @@ class DisplayBooks(DisplayBase):
             self.inputs['b_year'].delete(0, tk.END)
             self.inputs['b_year'].insert(0, b_year.strip())
 
-    def add_item(self):
+    def add_or_update_item(self, mode):
         b_books_name = self.inputs['b_books_name'].get().strip()
 
-        g_genres_name = self.inputs['g_genres_name'].get()
-
-        a_authors_name = self.inputs['a_authors_name'].get().split("-")
-        cl_a_authors_name = [part.strip() for part in a_authors_name]
-
-        b_year = self.inputs['b_year'].get().strip()
-
-        if b_books_name and g_genres_name and cl_a_authors_name and b_year.isdigit():
-            id_g_data = self.table_genres.find_id((g_genres_name,))
-
-            a_last_name,  a_middle_name, a_second_name = cl_a_authors_name
-            id_a_data = self.table_authors.find_id((a_last_name, a_middle_name, a_second_name))
-
-            self.table_books.insert_data((b_books_name, id_g_data, id_a_data, b_year))
-
-            self.update_listbox()
-            self.form_window.destroy()
-        else:
-            messagebox.showerror("Ошибка", "Введите корректные данные")
-
-    def update_item(self):
-        b_books_name = self.inputs['b_books_name'].get().strip()
-
-        g_genres_name = self.inputs['g_genres_name'].get()
+        g_genres_name = self.inputs['g_genres_name'].get().strip()
 
         a_authors_name = self.inputs['a_authors_name'].get().split("-")
         cl_a_authors_name = [part.strip() for part in a_authors_name]
@@ -99,7 +76,10 @@ class DisplayBooks(DisplayBase):
             a_last_name, a_middle_name, a_second_name = cl_a_authors_name
             id_a_data = self.table_authors.find_id((a_last_name, a_middle_name, a_second_name))
 
-            self.table_books.update_data((b_books_name, id_g_data, id_a_data, b_year), (self.id_to_update,))
+            if mode is "add":
+                self.table_books.insert_data((b_books_name, id_g_data, id_a_data, b_year))
+            elif mode is "update":
+                self.table_books.update_data((b_books_name, id_g_data, id_a_data, b_year), (self.id_to_update,))
 
             self.update_listbox()
             self.form_window.destroy()
@@ -113,12 +93,6 @@ class DisplayBooks(DisplayBase):
         self.update_listbox()
 
     def update_listbox(self):
+        self.listbox.delete(0, tk.END)
+        self.data = self.table_books.fetch_all()
         super().update_listbox()
-
-        data = self.table_books.fetch_all()
-        if data:
-            for row in data:
-                b_id, b_books_name, a_genres_name, a_last_name,  a_middle_name, a_second_name, b_year = row
-                display_string = f"{b_id}: {b_books_name} - {a_genres_name} - {a_last_name} - {a_middle_name} - {a_second_name} - {b_year}"
-
-                self.listbox.insert(tk.END, display_string)
