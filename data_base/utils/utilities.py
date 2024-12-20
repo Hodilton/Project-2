@@ -17,6 +17,10 @@ class Messages:
             print(f"The Database {db_path} has been deleted.")
 
         @staticmethod
+        def db_load_config():
+            print(f"The Database Config was uploaded.")
+
+        @staticmethod
         def table_load_config():
             print(f"The Tables Config was uploaded.")
 
@@ -68,6 +72,10 @@ class Messages:
         @staticmethod
         def db_file_found(db_path):
             print(f"The Database {db_path} file was not found.")
+
+        @staticmethod
+        def db_load_config():
+            raise Exception(f"The Database Config was not uploaded.")
 
         @staticmethod
         def table_load_config():
