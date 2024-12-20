@@ -31,7 +31,7 @@ class DatabaseHandler:
 
     def seed(self):
         # self.manager.drop_tables()
-        self.manager.create_tables()
+        # self.manager.create_tables()
 
         # self.manager.tables['genres'].insert_data(("Художественная литература",))
         # self.manager.tables['genres'].insert_data(("Научная литература",))
@@ -71,6 +71,18 @@ class DatabaseHandler:
         # self.manager.tables['books'].insert_data(("Доктор Живаго", 1, 2, 1957))
         # self.manager.tables['books'].insert_data(("Двенадцать", 1, 8, 1918))
 
+        # self.manager.tables['departments'].insert_data(("Обслуживание",))
+        # self.manager.tables['departments'].insert_data(("Читальный зал",))
+        # self.manager.tables['departments'].insert_data(("Абонемент",))
+        # self.manager.tables['departments'].insert_data(("Архив",))
+        # self.manager.tables['departments'].insert_data(("Информационный отдел",))
+
+        # self.manager.tables['librarians'].insert_data(("Ковалёв", "Евгений", "Александрович", 1))
+        # self.manager.tables['librarians'].insert_data(("Михайлова", "Ольга", "Викторовна", 2))
+        # self.manager.tables['librarians'].insert_data(("Семенова", "Ирина", "Сергеевна", 3))
+        # self.manager.tables['librarians'].insert_data(("Воронов", "Андрей", "Петрович", 4))
+        # self.manager.tables['librarians'].insert_data(("Павлова", "Татьяна", "Николаевна", 5))
+
         self.manager.tables['readers'].insert_data(("Иванов", "Иван", "Иванович"))
         self.manager.tables['readers'].insert_data(("Петров", "Петр", "Сергеевич"))
         self.manager.tables['readers'].insert_data(("Сидоров", "Алексей", "Николаевич"))
@@ -82,23 +94,13 @@ class DatabaseHandler:
         self.manager.tables['readers'].insert_data(("Зайцева", "Ольга", "Ивановна"))
         self.manager.tables['readers'].insert_data(("Морозов", "Никита", "Сергеевич"))
 
-        self.manager.tables['departments'].insert_data(("Обслуживание",))
-        self.manager.tables['departments'].insert_data(("Читальный зал",))
-        self.manager.tables['departments'].insert_data(("Абонемент",))
-        self.manager.tables['departments'].insert_data(("Архив",))
-        self.manager.tables['departments'].insert_data(("Информационный отдел",))
-
-        self.manager.tables['librarians'].insert_data(("Ковалёв", "Евгений", "Александрович", 1))
-        self.manager.tables['librarians'].insert_data(("Михайлова", "Ольга", "Викторовна", 2))
-        self.manager.tables['librarians'].insert_data(("Семенова", "Ирина", "Сергеевна", 3))
-        self.manager.tables['librarians'].insert_data(("Воронов", "Андрей", "Петрович", 4))
-        self.manager.tables['librarians'].insert_data(("Павлова", "Татьяна", "Николаевна", 5))
-
         self.manager.tables['borrowed_books'].insert_data(("2024-01-01", "2024-01-15", 1, 1, 1, 1))
         self.manager.tables['borrowed_books'].insert_data(("2024-01-02", "2024-01-16", 1, 2, 2, 2))
         self.manager.tables['borrowed_books'].insert_data(("2024-01-03", "2024-01-17", 2, 3, 3, 3))
         self.manager.tables['borrowed_books'].insert_data(("2024-01-04", "2024-01-18", 3, 4, 4, 4))
         self.manager.tables['borrowed_books'].insert_data(("2024-01-05", "2024-01-19", 4, 5, 5, 5))
+
+        pass
 
     def cleanup(self):
         # self.manager.drop_tables()
