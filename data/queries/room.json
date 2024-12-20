@@ -1,0 +1,13 @@
+{
+    "create": "CREATE TABLE IF NOT EXISTS room (id INT AUTO_INCREMENT PRIMARY KEY, room_number VARCHAR(255) NOT NULL, room_class_id INT NOT NULL, FOREIGN KEY (room_class_id) REFERENCES room_class(id));",
+    "drop": "DROP TABLE IF EXISTS room;",
+
+    "insert": "INSERT INTO room (room_number, room_class_id) VALUES (%s, %s);",
+    "delete": "DELETE FROM room WHERE id = %s;",
+    "update": "UPDATE room SET room_number = %s, room_class_id = %s WHERE id = %s;",
+
+    "find_id": "SELECT id FROM room WHERE room_number = %s;",
+
+    "fetch_one": "SELECT * FROM room WHERE id = %s;",
+    "fetch_all": "SELECT r.id, r.room_number, rc.class_name, rc.seats FROM room r JOIN room_class rc ON r.room_class_id = rc.id;"
+}
