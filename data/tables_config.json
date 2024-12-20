@@ -1,4 +1,6 @@
 {
-    "room": {},
-    "room_class": {}
+    "genres": {},
+    "book_statuses": {},
+    "books": {},
+    "authors": {}
 }
