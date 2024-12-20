@@ -1,6 +1,11 @@
 {
     "genres": {},
+
     "book_statuses": {},
     "books": {},
-    "authors": {}
+
+    "authors": {},
+
+    "departments": {},
+    "librarians": {}
 }
