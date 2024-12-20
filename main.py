@@ -1,31 +1,17 @@
 from data_base.src.db_handler import DatabaseHandler
 from app.app_main import Application
-
-from app.displays.display_base import DisplayBase
-from app.displays.display_room import DisplayRoom
-from app.displays.display_room_class import DisplayRoomClass
+from app.frames.frames_config import frames_config
 
 def main():
     db_handler = DatabaseHandler(config_path="./data")
 
     try:
-        frames_config = {
-            "Аудитории": {
-                "room_class": {
-                    "class": DisplayRoomClass,
-                    "name": "Кабинет - места",
-                },
-
-                "room": {
-                    "class": DisplayRoom,
-                    "name": "Аудитории",
-                },
-            },
-        }
-
         db_handler.setup()
-        # db_handler.run()
+        db_handler.seed()
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
+    try:
         app = Application(frames_config, db_handler.manager)
         app.run()
     except Exception as e:
