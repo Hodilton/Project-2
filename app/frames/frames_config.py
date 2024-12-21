@@ -5,9 +5,19 @@ from app.displays.display_books import DisplayBooks
 from app.displays.display_authors import DisplayAuthors
 from app.displays.display_departments import DisplayDepartments
 from app.displays.display_librarians import DisplayLibrarians
-
+from app.displays.display_readers import DisplayReaders
+from app.displays.display_borrowed_books import DisplayBorrowedBooks
 
 frames_config = {
+
+    "Выдача": {
+
+        "borrowed_books": {
+            "class": DisplayBorrowedBooks,
+            "name": "Выданные книги",
+        },
+
+    },
 
     "Книги": {
 
@@ -42,6 +52,15 @@ frames_config = {
         "departments": {
             "class": DisplayDepartments,
             "name": "Должности",
+        },
+
+    },
+
+    "Читатели": {
+
+        "readers": {
+            "class": DisplayReaders,
+            "name": "Читатели",
         },
 
     },

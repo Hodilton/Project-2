@@ -1,11 +1,13 @@
 {
-    "genres": {},
-
-    "book_statuses": {},
-    "books": {},
-
-    "authors": {},
+    "borrowed_books": {},
 
     "departments": {},
-    "librarians": {}
+    "librarians": {},
+
+    "book_statuses": {},
+    "authors": {},
+    "genres": {},
+    "books": {},
+
+    "readers": {}
 }

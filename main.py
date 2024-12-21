@@ -7,7 +7,7 @@ def main():
 
     try:
         db_handler.setup()
-        db_handler.seed()
+        db_handler.run()
     except Exception as e:
         print(f"An error occurred: {e}")
 
