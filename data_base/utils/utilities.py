@@ -2,11 +2,11 @@ class Messages:
     class Complete:
         @staticmethod
         def connection(db_path):
-            print(f"The connection to Database {db_path} was successful.")
+            print(f"The connection to Database '{db_path}' was successful.")
 
         @staticmethod
         def close_connection(db_path):
-            print(f"The connection to Database {db_path} was successful close.")
+            print(f"The connection to Database '{db_path}' was successful close.")
 
         @staticmethod
         def create_db(db_path):
@@ -26,7 +26,7 @@ class Messages:
 
         @staticmethod
         def table_load_queries(table_name):
-            print(f"Queries for table {table_name} was uploaded.")
+            print(f"Queries for table '{table_name}' was uploaded.")
 
         @staticmethod
         def table_initialized(table_name):

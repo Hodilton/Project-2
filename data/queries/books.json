@@ -6,7 +6,7 @@
     "delete": "DELETE FROM books WHERE id = %s;",
     "update": "UPDATE books SET title = %s, id_genre = %s, id_author = %s, year_published = %s WHERE id = %s;",
 
-    "find_id": "SELECT id FROM books WHERE title = %s AND year_published = %s;",
+    "find_id": "SELECT id FROM books WHERE title = %s;",
 
     "fetch_one": "SELECT b.id, b.title, g.genre_name, a.LastName, a.MiddleName, a.SecondName, b.year_published FROM books b JOIN genres g ON b.id_genre = g.id JOIN authors a ON b.id_author = a.id WHERE b.id = %s;",
     "fetch_all": "SELECT b.id, b.title, g.genre_name, a.LastName, a.MiddleName, a.SecondName, b.year_published FROM books b JOIN genres g ON b.id_genre = g.id JOIN authors a ON b.id_author = a.id;"

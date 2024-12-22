@@ -90,7 +90,7 @@ class DisplayBorrowedBooks(DisplayBase):
         b_book = self.inputs['b_book'].get().strip()
         b_book_parts = [part.strip() for part in b_book.split(" - ")]
         b_book_title = b_book_parts[0]
-        b_publication_year = b_book_parts[-1]  # последний элемент строки
+        b_publication_year = b_book_parts[-1]
 
         r_reader = self.inputs['r_reader'].get().split("-")
         cl_r_reader = [part.strip() for part in r_reader]
