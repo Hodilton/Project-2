@@ -1,6 +1,6 @@
 {
-    "host": "127.127.126.50",
-    "user": "barsuk",
-    "password": "qwerty",
-    "database": "project"
+    "host": "MySQL-8.2",
+    "user": "project-3-admin",
+    "password": "admin",
+    "database": "project-3"
 }
