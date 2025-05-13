@@ -30,10 +30,9 @@ class DatabaseHandler:
         self.manager.init_tables()
 
     def run(self):
-        # self.manager.drop_tables()
-        # self.manager.create_tables()
-        # self.seed()
-        pass
+        self.manager.drop_tables()
+        self.manager.create_tables()
+        self.seed()
 
     def seed(self):
         self.manager.tables['book_statuses'].insert_data(("Выдана",))
